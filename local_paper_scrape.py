@@ -44,9 +44,9 @@ def scrapesite(baseurl):
         except Exception as e:
             print(e)
             headlines.append("This headline has gone missing!")
-            d = {'Headline':headlines,'URL':URLlist}
-            df = pd.DataFrame(data = d)
-            df.to_csv('/home/phill/Documents/python_projects/BN_headlines.csv')
+        d = {'Headline':headlines,'URL':URLlist}
+        df = pd.DataFrame(data = d)
+        df.to_csv('/home/phill/Documents/python_projects/BN_headlines.csv')
 
 def senditout(recipient1,recipient2,recipient3): #function to send email
     with open('/home/phill/Documents/python_projects/BN_headlines.csv', 'r') as rf:
@@ -57,7 +57,7 @@ def senditout(recipient1,recipient2,recipient3): #function to send email
     conn.login("OttoKretschmer666@gmail.com","Submarine1")
     conn.sendmail('OttoKretschmer666@gmail.com','OttoKretschmer666@gmail.com', 'Subject: Automatic news from your local rag \n \n \n' + msg, mail_options=('SMTPUTF8'))
     conn.sendmail('OttoKretschmer666@gmail.com',recipient1, 'Subject: Automatic news from your local rag \n \n \n' + msg, mail_options=('SMTPUTF8'))
-    conn.sendmail('OttoKretschmer666@gmail.com',recipient2, 'Subject: Automatic news from your local rag \n \n \n' + msg, mail_options=('SMTPUTF8'))
+    #conn.sendmail('OttoKretschmer666@gmail.com',recipient2, 'Subject: Automatic news from your local rag \n \n \n' + msg, mail_options=('SMTPUTF8'))
     #conn.sendmail('OttoKretschmer666@gmail.com',recipient3, 'Subject: Automatic news from your local rag \n \n \n' + msg, mail_options=('SMTPUTF8'))
     conn.quit()
 
